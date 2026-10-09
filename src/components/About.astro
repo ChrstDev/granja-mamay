@@ -1,0 +1,100 @@
+---
+import Icon from "./Icon.astro";
+
+const stats = [
+  {
+    value: "+20 Años",
+    title: "Trayectoria Sólida",
+    desc: "Crianza avícola constante y confiable en el valle de Lurín.",
+  },
+  {
+    value: "100%",
+    title: "Recolección Diaria",
+    desc: "Despachos frescos directos del galpón sin intermediarios.",
+  },
+  {
+    value: "Km 37.5",
+    title: "Pampa Mamay",
+    desc: "Valle agrícola con aire puro y bioseguridad sanitaria estricta.",
+  },
+  {
+    value: "Eco+",
+    title: "Economía Circular",
+    desc: "Producción de compost orgánico estabilizado de alta fertilidad.",
+  },
+];
+
+const pillars = [
+  {
+    icon: "psychiatry",
+    title: "Bienestar Animal",
+    desc: "Gallinas nutridas con raciones formuladas a base de maíz seleccionado, en galpones aireados y protegidos del estrés en Pampa Mamay.",
+  },
+  {
+    icon: "recycling",
+    title: "Sostenibilidad Circular",
+    desc: "Aprovechamos al máximo cada subproducto avícola transformando la gallinaza en abono orgánico fértil para el agro y los valles peruanos.",
+  },
+  {
+    icon: "health_and_safety",
+    title: "Bioseguridad y Rigor",
+    desc: "Protocolos sanitarios periódicos y monitoreo microbiológico estricto que garantizan inocuidad y máxima frescura en cada entrega.",
+  },
+  {
+    icon: "restaurant",
+    title: "Orgullo Gastronómico",
+    desc: "Proveemos a los chefs, pastelerías artesanales y restaurantes de Lima que exigen viscosidad de clara y un color de yema consistente.",
+  },
+];
+---
+
+<section class="w-full bg-surface-low py-12 my-6">
+  <div class="contenedor-mamay grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+    {stats.map((stat) => (
+      <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-surface-lowest shadow-sm hover:shadow-md transition-shadow">
+        <span class="font-display font-bold text-4xl lg:text-5xl text-primary leading-none">
+          {stat.value}
+        </span>
+        <p class="text-sm font-semibold text-secondary mt-2">
+          {stat.title}
+        </p>
+        <span class="text-xs text-on-surface-variant mt-1 leading-relaxed">
+          {stat.desc}
+        </span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section id="nosotros" class="w-full py-16 lg:py-24 scroll-mt-24">
+  <div class="contenedor-mamay flex flex-col gap-12">
+    <div class="max-w-3xl flex flex-col gap-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-container w-fit text-[11px] uppercase font-bold tracking-wider">
+        Nuestra Filosofía
+      </div>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-[40px] lg:leading-[48px] text-primary font-semibold tracking-tight">
+        Más que una granja, una comunidad unida por la pasión
+      </h2>
+      <p class="text-base lg:text-lg text-on-surface-variant leading-relaxed">
+        En <strong class="text-primary font-semibold">Inversiones Mamay E.I.R.L. (Tribu IM+)</strong> consideramos que un huevo verdaderamente excepcional proviene de una cultura de respeto integral: el cuidado digno de nuestras aves de postura, un entorno limpio y un equipo humano entregado a la nutrición y soberanía alimentaria del Perú.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {pillars.map((pillar) => (
+        <article class="p-8 rounded-2xl bg-surface-lowest shadow-sm hover:shadow-md transition-all duration-300 flex flex-col gap-4">
+          <div class="w-14 h-14 rounded-2xl bg-primary-fixed flex items-center justify-center text-primary">
+            <Icon name={pillar.icon} class="w-7 h-7" />
+          </div>
+          <h3 class="font-display text-xl text-primary font-semibold">
+            {pillar.title}
+          </h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">
+            {pillar.desc}
+          </p>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

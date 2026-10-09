@@ -1,0 +1,109 @@
+---
+import Icon from "./Icon.astro";
+const faqs = [
+  {
+    question:
+      "¿Dónde se encuentra ubicada Granja Mamay y cómo puedo visitarlos?",
+    answer:
+      "Estamos ubicados en Pampa Mamay, Valle de Lurín, Lima (Altura Km 37.5 de la Panamericana Sur). Atendemos con rutas diarias de despacho a Lima Sur, Miraflores, San Borja, Surco, San Isidro y Lima Metropolitana. Para retiro presencial de pedidos mayoristas, coordina con 24 horas de antelación por bioseguridad.",
+  },
+  {
+    question: "¿Cuáles son los pedidos mínimos para hogares y para negocios?",
+    answer:
+      "Para familias y compras de hogar atendemos a partir de maples de 30 huevos o cajas familiares de 180 unidades. Para negocios de gastronomía, hoteles y distribuidores, distribuimos desde cajas maestras de 360 unidades con calibración homogénea y entrega programada en puerta.",
+  },
+  {
+    question: "¿Emiten comprobantes de pago para empresas?",
+    answer:
+      "Sí, por supuesto. Somos una empresa formal constituida como Inversiones Mamay E.I.R.L. con RUC 20509650228 activo (Buen Contribuyente SUNAT). Emitimos Factura Electrónica y Boleta de Venta formal para respaldar la contabilidad de tu restaurante, panadería o negocio.",
+  },
+  {
+    question: "¿Qué métodos de pago aceptan?",
+    answer:
+      "Aceptamos transferencias bancarias directas e interbancarias (BCP, BBVA, Interbank, Banco de la Nación), billeteras digitales (Yape y Plin) y para clientes corporativos recurrentes ofrecemos líneas de crédito previa evaluación.",
+  },
+];
+---
+
+<section id="preguntas" class="w-full py-20 scroll-mt-24">
+  <div class="contenedor-mamay flex flex-col gap-10">
+    <div class="text-center flex flex-col items-center gap-2 max-w-2xl mx-auto">
+      <span
+        class="text-[11px] uppercase tracking-widest text-secondary font-bold"
+      >
+        Dudas Habituales
+      </span>
+      <h2
+        class="font-display text-3xl sm:text-4xl lg:text-[40px] lg:leading-[48px] text-primary font-semibold"
+      >
+        Preguntas Frecuentes
+      </h2>
+      <p class="text-sm lg:text-base text-on-surface-variant">
+        Todo lo que necesitas saber sobre entregas, pedidos mínimos y calidad de
+        nuestros productos.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-4 w-full">
+      {
+        faqs.map((faq) => (
+          <!-- name="faq-mamay" enlaza los details para cerrar el anterior automáticamente sin usar JS -->
+          <details
+            name="faq-mamay"
+            class="group rounded-2xl bg-surface-lowest p-6 shadow-sm hover:shadow-md transition-all duration-200"
+          >
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              <h3 class="text-base lg:text-lg text-primary font-semibold">
+                {faq.question}
+              </h3>
+              <Icon
+                name="expand_more"
+                class="w-5 h-5 text-secondary transition-transform duration-300 group-open:rotate-180 shrink-0"
+              />
+            </summary>
+            <p class="pt-4 mt-4 text-sm lg:text-base text-on-surface-variant leading-relaxed border-t border-outline-variant/20">
+              {faq.answer}
+            </p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<section class="w-full pb-16">
+  <div class="contenedor-mamay">
+    <div
+      class="p-8 rounded-3xl bg-surface-container flex flex-col md:flex-row items-center justify-between gap-8"
+    >
+      <div class="flex items-center gap-5">
+        <div
+          class="w-16 h-16 rounded-2xl bg-surface-lowest flex items-center justify-center text-secondary shrink-0 shadow-sm"
+        >
+          <Icon name="groups" class="w-7 h-7" />
+        </div>
+        <div class="flex flex-col">
+          <h3
+            class="font-display text-xl lg:text-2xl text-primary font-semibold"
+          >
+            Únete a la Tribu IM+ en redes
+          </h3>
+          <p class="text-sm text-on-surface-variant mt-1">
+            Sigue nuestra rutina diaria de campo, fotos reales de los lotes y
+            consejos de nutrición en Facebook.
+          </p>
+        </div>
+      </div>
+
+      <a
+        href="https://www.facebook.com/Granjamamay"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="shrink-0 px-6 py-3.5 rounded-xl bg-surface-lowest hover:bg-surface-low text-primary text-sm font-bold shadow-sm transition-all duration-200 flex items-center gap-2"
+      >
+        <Icon name="thumb_up" class="w-5 h-5 text-secondary shrink-0" />
+        <span>@Granjamamay (+2,500 seguidores)</span>
+      </a>
+    </div>
+  </div>
+</section>

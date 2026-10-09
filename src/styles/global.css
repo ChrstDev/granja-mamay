@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #fcf9f4;
+  --color-surface: #fcf9f4;
+  --color-surface-low: #f6f3ee;
+  --color-surface-container: #f0ede9;
+  --color-surface-lowest: #ffffff;
+  --color-primary: #06250c;
+  --color-primary-container: #1d3b20;
+  --color-primary-fixed: #c8ecc5;
+  --color-secondary: #904d00;
+  --color-secondary-container: #fe932c;
+  --color-secondary-fixed: #ffdcc3;
+  --color-secondary-dim: #ffb77d;
+  --color-on-secondary-container: #663500;
+  --color-on-surface: #1c1c19;
+  --color-on-surface-variant: #424841;
+  --color-outline-variant: #c2c8be;
+  --font-display: "Vollkorn", serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+}
+
+@utility contenedor-mamay {
+  @apply w-full max-w-[1440px] mx-auto px-4 lg:px-6;
+}

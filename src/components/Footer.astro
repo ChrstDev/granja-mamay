@@ -1,0 +1,128 @@
+---
+import Icon from "./Icon.astro";
+import { SITE_CONFIG, getWhatsAppUrl } from "../config/site";
+const currentYear = new Date().getFullYear();
+
+const navLinks = [
+  { name: "Inicio", href: "#" },
+  { name: "Nosotros y Nuestra Granja", href: "#nosotros" },
+  { name: "Catálogo de Productos", href: "#catalogo" },
+  { name: "Certificaciones y Calidad", href: "#calidad" },
+  { name: "Venta Mayorista / Negocios", href: "#negocios" },
+  { name: "Preguntas Frecuentes", href: "#preguntas" },
+];
+---
+
+<aside class="fixed bottom-6 right-6 z-40">
+  <a 
+    href={getWhatsAppUrl("Hola Granja Mamay, vi su página web y deseo hacer una consulta")} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    aria-label="Chatear por WhatsApp con Granja Mamay"
+    class="group flex items-center gap-3 px-5 py-3.5 bg-primary-container text-white rounded-full shadow-[0_16px_36px_-12px_rgba(29,59,32,0.45)] hover:bg-primary transition-all duration-300 transform hover:-translate-y-1"
+  >
+    <Icon name="chat" class="w-6 h-6 text-primary-fixed shrink-0" />
+    <span class="text-sm font-bold tracking-wide">¡Pide aquí por WhatsApp!</span>
+  </a>
+</aside>
+
+<footer class="w-full bg-surface-low text-on-surface mt-12 border-t border-outline-variant/30">
+  <div class="contenedor-mamay py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <img
+            src="/mamay.svg"
+            alt="Logo Granja Mamay"
+            class="w-9 h-9 object-contain"
+          />
+          <span class="font-display text-xl font-semibold tracking-tight text-primary">
+            {SITE_CONFIG.businessName}
+          </span>
+        </div>
+        <p class="text-sm text-on-surface-variant leading-relaxed">
+          Crianza y producción avícola responsable en el Valle de Lurín. Huevos de campo, bienestar animal y distribución garantizada con frescura diaria.
+        </p>
+        <div class="flex flex-col gap-0.5 text-on-surface-variant text-xs mt-1">
+          <span class="font-bold text-on-surface">{SITE_CONFIG.legalName}</span>
+          <span>RUC: {SITE_CONFIG.ruc}</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h4 class="text-base font-bold text-primary">Navegación</h4>
+        <ul class="flex flex-col gap-2 text-sm">
+          {navLinks.map((link) => (
+            <li>
+              <a 
+                href={link.href} 
+                class="text-on-surface-variant hover:text-primary transition-colors"
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h4 class="text-base font-bold text-primary">Ubicación y Horarios</h4>
+        <div class="flex items-start gap-2 text-on-surface-variant text-sm">
+          <Icon name="location_on" class="w-5 h-5 text-secondary shrink-0 mt-0.5" />
+          <span>Sector Pampa Mamay, Km 37.5 Panamericana Sur, Lurín, Lima - Perú</span>
+        </div>
+        <div class="flex items-start gap-2 text-on-surface-variant text-sm mt-2">
+          <Icon name="schedule" class="w-5 h-5 text-secondary shrink-0 mt-0.5" />
+          <div>
+            <p class="font-semibold text-on-surface">Horario de Atención:</p>
+            <p>Lunes a Sábado: 7:00 am - 5:00 pm</p>
+            <p class="text-xs text-secondary font-semibold mt-0.5">
+              Domingos: Despachos programados
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h4 class="text-base font-bold text-primary">Comunidad y Contacto</h4>
+        <p class="text-sm text-on-surface-variant leading-relaxed">
+          Sigue nuestra jornada diaria y crianza limpia junto a más de 2,500 familias y restaurantes aliados.
+        </p>
+        <a 
+          href={SITE_CONFIG.facebookUrl} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary text-sm font-bold transition-colors"
+        >
+          <Icon name="groups" class="w-5 h-5 text-secondary shrink-0" />
+          <span>@Granjamamay (+2,500 seguidores)</span>
+        </a>
+
+        <div class="p-4 rounded-xl bg-surface-container border border-outline-variant/40 flex flex-col gap-1">
+          <span class="text-[11px] uppercase tracking-wider text-secondary font-bold">
+            Canal Directo Granja
+          </span>
+          <a 
+            href={getWhatsAppUrl()} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="text-lg font-bold text-primary hover:text-secondary transition-colors"
+          >
+            {SITE_CONFIG.phoneDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-8 border-t border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-on-surface-variant">
+      <p>
+        © {currentYear} Granja Mamay (Inversiones Mamay E.I.R.L.). Todos los derechos reservados. Alimentos frescos con orgullo peruano.
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="#preguntas" class="hover:text-on-surface transition-colors">Preguntas</a>
+        <a href="https://www.facebook.com/Granjamamay" target="_blank" rel="noopener noreferrer" class="hover:text-on-surface transition-colors">Facebook Oficial</a>
+      </div>
+    </div>
+
+  </div>
+</footer>

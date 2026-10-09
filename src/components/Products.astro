@@ -1,0 +1,156 @@
+---
+import Icon from "./Icon.astro";
+import { getWhatsAppUrl } from "../config/site";
+import huevosMaple from "../assets/huevos-granja-maple.jpg";
+import huevosMayorista from "../assets/huevos-lote-mayorista.jpg";
+import compostOrganico from "../assets/compost-gallinaza-organico.jpg";
+
+const products = [
+  {
+    badge: "Consumo Diario",
+    title: "Huevos de Granja",
+    category: "Mesa y Hogar",
+    desc: "Presentación en maples resistentes de 30 unidades y cajas de 180 huevos. Cáscara firme, clara densa y yemas doradas llenas de sabor natural.",
+    image: huevosMaple.src,
+    imageAlt: "Huevos frescos de granja en maple artesanal de 30 unidades",
+    features: [
+      "Calibres disponibles: Extra y Especial",
+      "Yema ámbar brillante rica en nutrientes",
+      "Ideal para desayunos, repostería y bodegas",
+    ],
+    ctaText: "Solicitar Maple / Caja",
+    ctaIcon: "shopping_bag",
+    waMessage: "Hola Granja Mamay, deseo pedir maples o cajas de Huevos para mi hogar",
+    featured: false,
+  },
+  {
+    badge: "Venta Mayorista",
+    title: "Lote Mayorista",
+    category: "Gastronomía",
+    desc: "Cajas maestras de 360 unidades con calibración homogénea por peso. Diseñado para restaurantes, panaderías, cafeterías y catering con alto flujo.",
+    image: huevosMayorista.src,
+    imageAlt: "Cajas mayoristas de huevos clasificados para restaurantes en Lima",
+    features: [
+      "Despacho programado semanal o interdiario",
+      "Entrega directa en local (Lima y Lurín)",
+      "Facturación Electrónica oficial con RUC 20",
+    ],
+    ctaText: "Cotizar Pedido Mayorista",
+    ctaIcon: "storefront",
+    waMessage: "Hola Granja Mamay, tengo un negocio gastronómico y deseo cotizar lote mayorista",
+    featured: true,
+  },
+  {
+    badge: "100% Orgánico",
+    title: "Compost de Gallinaza",
+    category: "Agro y Jardín",
+    desc: "Abono orgánico fermentado y estabilizado a altas temperaturas. Alto contenido de nitrógeno, fósforo y materia orgánica activa que revitaliza la tierra.",
+    image: compostOrganico.src,
+    imageAlt: "Tierra fértil enriquecida con compost orgánico de gallinaza",
+    features: [
+      "Sacos reforzados de 25 kg y 50 kg",
+      "Sin olores molestos, inocuo y libre de patógenos",
+      "Para huertos familiares, viveros y campos",
+    ],
+    ctaText: "Consultar Sacos de Compost",
+    ctaIcon: "compost",
+    waMessage: "Hola Granja Mamay, deseo información sobre los sacos de compost de gallinaza",
+    featured: false,
+  },
+];
+---
+
+<section id="catalogo" class="w-full bg-surface-low py-20 scroll-mt-24">
+  <div class="contenedor-mamay flex flex-col gap-12">
+    <div class="text-center max-w-2xl mx-auto flex flex-col items-center gap-3">
+      <span class="text-[11px] uppercase tracking-widest text-secondary font-bold">
+        Cosecha de Hoy
+      </span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-[40px] lg:leading-[48px] text-primary font-semibold">
+        Nuestros Productos de Granja
+      </h2>
+      <p class="text-sm lg:text-base text-on-surface-variant">
+        Frescura del día seleccionada cuidadosamente para familias, restaurantes de autor y proyectos agroecológicos.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-4">
+      {products.map((product) => (
+        <article 
+          class={`p-8 rounded-3xl bg-surface-lowest transition-all duration-300 flex flex-col justify-between relative ${
+            product.featured 
+              ? "shadow-xl lg:-translate-y-2 border-2 border-secondary-container" 
+              : "shadow-sm hover:shadow-xl"
+          }`}
+        >
+          {product.featured && (
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-secondary text-white text-[11px] font-bold tracking-wider uppercase shadow-md flex items-center gap-1.5 whitespace-nowrap">
+              <Icon name="hotel_class" class="w-3.5 h-3.5 shrink-0" />
+              <span>Más Pedido por Negocios</span>
+            </div>
+          )}
+
+          <div class="flex flex-col gap-4 mt-1">
+            <div class="h-44 rounded-2xl bg-surface-container overflow-hidden relative">
+              <img 
+                src={product.image} 
+                alt={product.imageAlt} 
+                loading="lazy"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
+              <span class={`absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-bold shadow-sm ${
+                product.featured 
+                  ? "bg-secondary-container text-on-secondary-container" 
+                  : "bg-surface-lowest/90 text-primary"
+              }`}>
+                {product.badge}
+              </span>
+            </div>
+
+            <div class="flex items-baseline justify-between mt-2 gap-2">
+              <h3 class="font-display text-2xl text-primary font-semibold">
+                {product.title}
+              </h3>
+              <span class="text-sm text-secondary font-bold shrink-0">
+                {product.category}
+              </span>
+            </div>
+
+            <p class="text-sm text-on-surface-variant leading-relaxed">
+              {product.desc}
+            </p>
+
+            <ul class="flex flex-col gap-2.5 pt-2 text-on-surface-variant text-xs">
+              {product.features.map((feat) => (
+                <li class="flex items-center gap-2">
+                  <Icon
+                    name={product.featured ? "verified" : "check_circle"}
+                    class="w-4 h-4 text-secondary shrink-0"
+                  />
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-outline-variant/30">
+            <a 
+              href={getWhatsAppUrl(product.waMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`w-full py-3.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition-colors ${
+                product.featured
+                  ? "bg-secondary-container text-on-secondary-container hover:bg-secondary hover:text-white shadow-md"
+                  : "bg-primary text-white hover:bg-primary-container"
+              }`}
+            >
+              <Icon name={product.ctaIcon} class="w-5 h-5 shrink-0" />
+              <span>{product.ctaText}</span>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
